@@ -1,0 +1,9 @@
+{
+  "amqp": "amqp://yhpsylsl:ExPCz5rjfIGN21RxXzDcqBc4MMDGDxLD@eagle.rmq.cloudamqp.com/yhpsylsl",
+  "queue": "nodemailer-amqp",
+
+  "server": {
+    "port": 12345,
+    "host": "127.0.0.1"
+  }
+}
