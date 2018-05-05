@@ -174,7 +174,7 @@ function listMessages(auth) {
                   console.log(data);
                   // console.log(message.data.payload.headers);
                   var labels = [];
-                  if(data['_id']){
+                  if(data && data['_id']){
                     labels = ["Label_1"];
                   }else{
                     labels = ["Label_2"]
