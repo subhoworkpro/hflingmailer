@@ -230,6 +230,7 @@ function listMessages(auth) {
                                 console.log(emailArr);
                                 if(emailArr[1] == 'poster@healthyfling.com'){
                                   msg = {
+                                      from: 'Healthy Fling <info@healthyfling.com>', // sender address
                                       to: data.email,
                                       replyTo: data['_id']+"-"+cryptr.encrypt(fromAddr)+"-reply@healthyfling.com",
                                       subject: subject,
@@ -237,6 +238,7 @@ function listMessages(auth) {
                                   };
                                 }else if(emailArr[2] == 'reply@healthyfling.com'){
                                   msg = {
+                                      from: 'Healthy Fling <info@healthyfling.com>', // sender address
                                       to: cryptr.decrypt(emailArr[1]),
                                       replyTo: data['_id']+"-poster@healthyfling.com",
                                       subject: subject,
