@@ -13,6 +13,8 @@ const config = require('./config');
 var Cryptr = require('cryptr'),
     cryptr = new Cryptr('Ji5RW2BlJ6');
 
+var schedule = require('node-schedule');
+
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/gmail-nodejs-quickstart.json
 var SCOPES = ['https://mail.google.com']; 
@@ -21,15 +23,19 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
 var TOKEN_PATH = TOKEN_DIR + 'gmail-nodejs-quickstart.json';
 
 // Load client secrets from a local file.
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  // Authorize a client with the loaded credentials, then call the
-  // Gmail API.
-  // authorize(JSON.parse(content), listLabels);
-  authorize(JSON.parse(content), listMessages);
+
+var j = schedule.scheduleJob('*/2 * * * *', function(){
+  console.log('The answer to life, the universe, and everything!');
+  fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+    if (err) {
+      console.log('Error loading client secret file: ' + err);
+      return;
+    }
+    // Authorize a client with the loaded credentials, then call the
+    // Gmail API.
+    // authorize(JSON.parse(content), listLabels);
+    authorize(JSON.parse(content), listMessages);
+  });
 });
 
 /**
