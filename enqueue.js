@@ -219,7 +219,7 @@ function listMessages(auth) {
                               console.log(data);
                               // console.log(message.data.payload.headers);
                               var labels = [];
-                              if(data['_id']){
+                              if(data && data['_id']){
                                 labels = ["Label_3"];
                                 var msg = {};
                                 console.log(emailArr);
