@@ -23,7 +23,7 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
 var TOKEN_PATH = TOKEN_DIR + 'gmail-nodejs-quickstart.json';
 
 // Load client secrets from a local file.
-var j = schedule.scheduleJob('*/5 * * * *', function(){
+var j = schedule.scheduleJob('*/2 * * * *', function(){
   console.log('Running cron..');
   fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     if (err) {
