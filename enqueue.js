@@ -302,7 +302,7 @@ function extractValidEmailAddress(text){
 
 function validateEmailAddress(email){
   var arr = email.split("-");
-  if (arr.length > 1)
+  if (arr.length > 0)
     return arr;
   return [];
 }
