@@ -213,8 +213,8 @@ function listMessages(auth) {
                         'userId': 'me',
                         'id': message.id
                       }, function(err, message){
-                        var sender = getHeader(message.data.payload.headers,"To");
-                        var fromAddr = getHeader(message.data.payload.headers,"From");
+                        var sender = extractValidEmailAddress(getHeader(message.data.payload.headers,"To"));
+                        var fromAddr = extractValidEmailAddress(getHeader(message.data.payload.headers,"From"));
                         var subject = getHeader(message.data.payload.headers,"Subject");
                         console.log(validateEmailAddress(sender));
                         let emailArr = validateEmailAddress(sender);
@@ -290,6 +290,14 @@ function getHeader(headers, index) {
     }
   }
   return header;
+}
+
+function extractValidEmailAddress(text){
+  var arr = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+  if (arr.length > 0) {
+    return arr[0];
+  }
+  return false;
 }
 
 function validateEmailAddress(email){
